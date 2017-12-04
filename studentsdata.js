@@ -99,10 +99,10 @@ function getStudent(id){
 }
 
 
-// function setStudent(){
-// 	var studentList = getAllStudents();
-// 	for(var j=0;j<studentList.length;j++){
-// 		window.localStorage.setItem('First Name',studentList[j].firstName);
-// 	}
-// }
+function setStudent(){
+	var studentList = getAllStudents();
+	for(var j=0;j<studentList.length;j++){
+		window.localStorage.setItem('First Name',studentList[j].firstName);
+	}
+}st
 
