@@ -17,11 +17,19 @@
  	<input type="button" name="edit" value="Edit" id="editBut">
  	<input type="button" name="cancel" value="Save" id="saveBut">
  	<input type="button" name="" value="Cancel" id="cancelBut">	
+
+ 	<input type="button" value=" Back to students " id="backBut" onclick=""> 
+
+
+
  	<script type="text/javascript" src="studentsdata.js"></script>
  	<script type="text/javascript" src="studentDetailsController.js"></script>
 
+
+
  	<script >
-	loadNestedInfo();
+		var controller = new studentDetailsController();	
+		controller.loadUserDetailsInfo();
  	</script>
 </body>
 </html>

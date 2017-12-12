@@ -16,18 +16,16 @@
 			</tr>
 		</table>
 		<input type="button" name="Create" value="Create Student" id="createBut" onclick="">
+		<input type="button" name="" value=" Delete All " id="deleteBut">
 	</div>
 
 <script type="text/javascript" src="studentsdata.js"></script>
 <script type="text/javascript" src="studentsController.js"></script>
 
-<script type="text/javascript" src="studentdetailsController.js"></script>
-
 
 <script>
-	
-	loadStudents();
-
+	var studController = new studentsController();
+	studController.loadStudents();
 </script>
 
 </body>
