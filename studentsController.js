@@ -6,46 +6,26 @@ function studentsController(){
 	createBut.addEventListener("click", createStudent, false);
 	deleteBut.addEventListener("click", deleteList, false);
 
-	//public function
+	var university = angular.module('university', [ ]);
 
-	this.loadStudents = function(){
-		var students = dataCont.getAllStudents();
-		for(var i=0;i<students.length;i++){
-			drawStudent(students[i]);
-		}
+	university.controller('StudentsController', function($scope){
+		this.studentList = dataCont.getAllStudents();
 
-		function drawStudent(st){
-			var d = document;
-			var table = d.getElementById("studentsTable");
-			var tr = d.createElement("tr");
-			var tdName = d.createElement("td");
-			var tdDepartment = d.createElement("td");
-			var tdCourse = d.createElement("td");
-			var anchor = d.createElement('a');
+		$scope.sortType = 'firstName';
+		$scope.sortReverse  = false;
+		$scope.searchStudent   = '';
+	});
 
-			anchor.setAttribute('href','studentdetails.html?id=' + st.id);
-			anchor.setAttribute('target','_blank');
-
-			anchor.innerHTML = st.firstName + ' ' + st.lastName;
-
-			tdName.appendChild(anchor);
-			tdDepartment.innerHTML = st.department;
-			tdCourse.innerHTML = st.course;
-
-			tr.appendChild(tdName);
-			tr.appendChild(tdDepartment);
-			tr.appendChild(tdCourse);
-
-			table.appendChild(tr);
-		
-		}
-	}
-
-	//private function
-	
+//private function
 	function deleteList(){
-		window.localStorage.clear();
-		window.location = window.location;
+		var answer = confirm("Are you sure?")
+		if(answer) {
+			window.localStorage.clear();
+			window.location = window.location;
+		}
+		else{
+ 			return;
+		}
 	}
 	
 	function createStudent(){

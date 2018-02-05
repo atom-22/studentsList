@@ -19,8 +19,38 @@ function studentDetailsController(){
 		student = new Student();
 	}
 
-//private functions
+//Angular
+	var university = angular.module('university', [ ]);
+	
+	university.controller("PanelController", function($scope){
+		// this.student = dataCont.getStudent(id);		
+		$scope.firstName = student.firstName;
+		$scope.lastName = student.lastName;
+		$scope.gender = student.gender;
+		$scope.age = student.age;
 
+		$scope.email = student.email;
+		$scope.phoneNumber = student.phoneNumber;
+		$scope.address = student.address;
+
+		$scope.department = student.department;
+		$scope.course = student.course;
+		$scope.averageMark = student.averageMark;
+		$scope.imageSrc = student.imageSrc;
+
+	
+		this.tab = 1;
+
+		this.selectTab = function(setTab) {
+			this.tab = setTab;
+		};
+		this.isSelected = function(checkTab){
+			return this.tab === checkTab;
+		};
+	});
+
+
+//private functions
 	function getIdFromQuerySring(){
 		var key = 'id=';	
  		var qsIndex = window.location.search.indexOf(key); 
@@ -31,38 +61,13 @@ function studentDetailsController(){
 		return id;
 	}
 
-	 
-	function drawStudentInfo(key,value){
-			var detailsTable = document.getElementById('detailsTable');
-			var d = document,
-			tr = d.createElement('tr'),
-			tdKey = d.createElement('td'),
-		 	tdValue = d.createElement('td'),
-		 	tdInputField = d.createElement('input');
-		 	
- 			tdKey.innerHTML = key;
-		
- 			tdInputField.setAttribute('type','text');
-		 	tdInputField.readOnly = true;
-		 	tdInputField.value = value;
-		 	tdInputField.setAttribute('name',key);	
-		 	
-		 	tr.appendChild(tdKey);
-		 	tr.appendChild(tdValue);
-		 	tdValue.appendChild(tdInputField);
-
-		 	detailsTable.appendChild(tr);	
-
-	}
-
 	function setReadOnly(isReadOnly){													
-		var selector = document.querySelectorAll("input[type='text']");
+		var selector = document.querySelectorAll("input[type='text'],input[type='email'],input[type='number'],input[type='tel']");
 		for (var i = 0; i < selector.length;i++) {
 			selector[i].readOnly = isReadOnly;
 			selector[i].style.backgroundColor = "#f2f2f2";
 		}
 	}
-
 
 	function editButFunc() {															//edit student's information
 		setReadOnly(false);
@@ -77,6 +82,7 @@ function studentDetailsController(){
 		var queryString = "";
 
 		if (!id) {
+			var studList = dataCont.getAllStudents();
 			student.id = studList.length + 1;
 			studList.push(student);
 			queryString = "?id=" + student.id;
@@ -92,11 +98,10 @@ function studentDetailsController(){
 		student.email = document.querySelector("input[name='Email']").value;
 		student.averageMark = document.querySelector("input[name='Average Mark']").value;
 		student.phoneNumber = document.querySelector("input[name='Phone Number']").value;
-
+		
 
 		dataCont.saveStudent(student);
-		window.location = window.location + queryString; 
-			
+		window.location = window.location + queryString; 		
 	}
 
 	function cancelButFunc(){							 
@@ -107,24 +112,4 @@ function studentDetailsController(){
 		window.location = "students.html";
 	}
 
-//public functions
-
-	this.loadUserDetailsInfo=function(){
-		drawStudentInfo("First Name", student.firstName);
-		console.log(student.firstName);
-		drawStudentInfo("Last Name", student.lastName);
-		drawStudentInfo("Gender", student.gender);
-		drawStudentInfo("Age", student.age);
-		drawStudentInfo("Course", student.course);
-		drawStudentInfo("Address",student.address);
-		drawStudentInfo("Department", student.department);
-		drawStudentInfo("Average Mark", student.averageMark);
-		drawStudentInfo("Phone Number", student.phoneNumber);
-		drawStudentInfo("Email", student.email);
-
-		if (!id) {
-			editBut.click();
-		}
-		
-	 }
 }	

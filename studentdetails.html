@@ -1,35 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app = 'university'>
 <head>
 	<title>Info About Student</title>
 	<link rel="icon" href="https://image.flaticon.com/icons/png/512/183/183338.png"/>
 	<link rel="stylesheet" type="text/css" href="tableStyles.css">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
-<body>
-
- 	<table id="detailsTable">
- 	</table>
-
- 	<table id="newd"></table>
-
-
+<body ng-controller="PanelController as panel">
+	<section  class="container">
+			<figure>
+  				<img ng-src="{{imageSrc}}" src="images/noavatar.png" alt="Image">
+			</figure>
+			<div id="personalInfo">
+				<ul>
+					<li>
+						{{gender}}
+						{{firstName}}
+						{{lastName}}
+					</li>
+					<li>
+						<span>{{age}} years old</span>
+					</li>
+				</ul>
+			</div>
+		<div>
+			<ul class="nav nav-pills">
+		 		<li ng-class="{active:panel.isSelected(1)}" class="navil" id="Personal">
+		 			<a href ng-click="panel.selectTab(1)">&nbspPersonal Data&nbsp</a>
+		 		</li>
+		 		<li ng-class="{active:panel.isSelected(2)}" class="navil">
+		 			<a href ng-click="panel.selectTab(2)">&nbspUniversity Data&nbsp</a>
+		 		</li>
+	 		</ul>
+		</div>
+	 	<div> 
+	 		<div class="panel" ng-show="panel.isSelected(1)">
+		 		<p>Email:{{email}}</p>
+	 			<p>Phone Number:{{phoneNumber}}</p>
+	 			<p>Address:{{address}}</p>
+	 		</div>
+	 		<div class="panel" ng-show="panel.isSelected(2)">
+	 			<p>Department:{{department}}</p>
+	 			<p>Course:{{course}}</p>
+	 			<p>Average Mark:{{averageMark}}</p>
+	 		</div>
+	 	</div>	
+	</section>
+	<div id="infoController">
+		<form method="" action="" name="reviewForm" ng-submit="reviewForm.$valid" novalidate>
+		 	<table  id="modelTable">
+			  <tr>
+			    <td>First Name</td>
+			    <td><input ng-model="firstName" type="text" class="name" name="First Name" value="{{firstName}}" placeholder="Name" readonly required/></td>
+			  </tr>
+			  <tr>
+			    <td>Last Name</td>
+			    <td><input ng-model="lastName" type="text"  class="name" name="Last Name" value="{{lastName}}" placeholder="Surname" readonly required/></td>
+			  </tr>
+			   <tr>
+			    <td>Gender</td>
+			    <td><input ng-model="gender" type="text" name="Gender" value="{{gender}}" placeholder="Mr/Mrs" readonly required/></td>
+			  </tr>
+			  <tr>
+			  	<td>Age</td>
+			  	<td><input ng-model="age" type="number" name='Age' min="16" max="63" value="{{age}}" placeholder="Age" readonly/></td>
+			  </tr>
+			  <tr>
+			  	<td>Course</td>
+			  	<td><input ng-model="course" type="number" name="Course"  min="1" max="4" value="{{course}}" placeholder="Course" readonly></td>
+			  </tr> 
+			  <tr>
+			  	<td>Address</td>
+			  	<td><input ng-model="address" type="text" name="Address" value="{{address}}" placeholder="Address" readonly></td>
+			  </tr>
+			  <tr>
+			  	<td>Department</td>
+			  	<td><input ng-model="department" type="text" name="Department" value="{{department}}" placeholder="Department" readonly></td>
+			  </tr>
+			  <tr>
+			  	<td>Average Mark</td>
+			  	<td><input ng-model="averageMark" type="number" name="Average Mark" min="1" max="20"  value="{{averageMark}}" placeholder="Average Mark" readonly></td>
+			  </tr>
+			  <tr>
+			  	<td>Phone Number</td>
+			  	<td><input ng-model="phoneNumber" type="tel" name="Phone Number" value="{{phoneNumber}}" placeholder="Phone Number" readonly></td>
+			  </tr>
+			  <tr>
+			  	<td>Email</td>
+			  	<td><input ng-model="email" type="email" name='Email' value="{{email}}" placeholder="Email" readonly required></td>
+			  </tr>
+			</form>
+		</table>
+	</div>
  	<input type="button" name="edit" value="Edit" id="editBut">
- 	<input type="button" name="cancel" value="Save" id="saveBut">
+ 	<input type="button" name="save" value="Save" id="saveBut">
  	<input type="button" name="" value="Cancel" id="cancelBut">	
 
  	<input type="button" value=" Back to students " id="backBut" onclick=""> 
 
-
-
+ 	<script type="text/javascript" src='angular.min.js'></script>
  	<script type="text/javascript" src="studentsdata.js"></script>
  	<script type="text/javascript" src="studentDetailsController.js"></script>
 
-
-
  	<script >
 		var controller = new studentDetailsController();	
-		controller.loadUserDetailsInfo();
  	</script>
 </body>
 </html>

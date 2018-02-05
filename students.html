@@ -1,31 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app = 'university'>
 <head>
-	<title>📈 Students </title>
+	<title>Students </title>
 	<link rel="icon" href="https://thevarsity.ca/wp-content/uploads/2013/02/Grad-Hat-pre-colour-choice.png"/>
 	<link rel="stylesheet" type="text/css" href="tableStyles.css">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
-	<div>
+	<div ng-controller = 'StudentsController as students'>
 		<table id="studentsTable">
 			<tr>
-				<td>Name</td>
-				<td>Department</td>
-				<td>Course</td>
+				<td>Image</td>
+				<td>
+					<a href ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+						Name
+						<span ng-show="sortType == 'firstName' && !sortReverse">&#8681;</span>
+	            		<span ng-show="sortType == 'firstName' && sortReverse">&#8679;</span>
+            		</a>
+				</td>
+				<td>
+					<a href ng-click="sortType = 'department'; sortReverse = !sortReverse">
+						Department
+						<span ng-show="sortType == 'department' && !sortReverse">&#8681;</span>
+	            		<span ng-show="sortType == 'department' && sortReverse">&#8679;</span>
+          			</a>
+				</td>
+				<td>
+					<a href ng-click="sortType = 'course'; sortReverse = !sortReverse">
+						Course
+						<span ng-show="sortType == 'course' && !sortReverse">&#8681;</span>
+		            	<span ng-show="sortType == 'course' && sortReverse">&#8679;</span>
+		            </a>
+				</td>
+			</tr>
+			<tr ng-repeat = 'st in students.studentList | orderBy:sortType:sortReverse | filter:searchStudent'>       
+				<td><img ng-src="{{st.imageSrc}}" alt="Image" src="images/noavatar.png"></td>
+				<td><a href="studentDetails.html?id={{st.id}}">{{st.firstName + " "+ st.lastName}}</a></td>
+				<td>{{st.department}}</td>
+				<td>{{st.course}}</td>
 			</tr>
 		</table>
 		<input type="button" name="Create" value="Create Student" id="createBut" onclick="">
 		<input type="button" name="" value=" Delete All " id="deleteBut">
 	</div>
-
+<script type="text/javascript" src='angular.min.js'></script>
 <script type="text/javascript" src="studentsdata.js"></script>
 <script type="text/javascript" src="studentsController.js"></script>
 
-
 <script>
 	var studController = new studentsController();
-	studController.loadStudents();
 </script>
 
 </body>

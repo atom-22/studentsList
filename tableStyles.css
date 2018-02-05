@@ -8,11 +8,78 @@
 	font-family: 'Playfair Display', serif;
 }
 
+.container{
+	border: 2px solid;
+	background-color: green;
+	width: 30%;
+	height: 455px;
+	padding: 20px;
+	margin-left: 50%;
+}
+
+#personalInfo{
+	width: 25%;
+	position: absolute;
+	top: 2%;
+	right: 15%;
+}
+
+li{
+	list-style: none;
+	line-height: 40px;
+}
+
+#Personal{
+	margin: 0% 5% 10% 1%;
+}
+
+.navil{
+	border-bottom: 2px solid green;
+	display: inline-block;
+	background-color: lightgreen;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.navil:hover{
+	background-color:#ffffff; 
+}
+
+a{
+	text-decoration-line: none;
+}
+
+figure{
+	width: 100%;
+	border:1px solid green; 
+}
+
+figure>img{
+	width: 85px;
+	height: 95px;
+	margin-bottom: 50px;
+	border-radius: 10px;
+}
+
+td>img{
+	width: 45px;
+	height: 42px;
+	border-radius: 3px;
+}
+
+p{
+	line-height: 40px;
+}
+
 table {
 	border:1px solid;
 	background-color: green;
     border-collapse: collapse;
     width: 50%;
+}
+#modelTable{
+	width: 100%;
+	border:none;
 }
 
 th, td {
@@ -31,6 +98,15 @@ a{
 	color: black;	
 }
 
+#infoController{
+	background-color: green;
+	width: 32%;
+	/*height: 360px;*/
+	border: 2px solid black;
+	position: absolute;
+	top: 0px;
+	left: 17%; 
+}
 
 input[type="button"]{
 	border-radius: 5px;
@@ -42,16 +118,34 @@ input[type="button"]{
 	text-align: center;
 	outline: none;
 	margin-left: 1%;
-
 }
 
-input[type="text"]{
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"]{
 	/*background-color: #f2f2f2; */
 	background:none;
 	padding-left: 1%;
-	text-align: center;
+	text-align: left;
 	border: none;
 	height: 30px;
+}
+
+
+.ng-invalid.ng-dirty {
+color: red;
+}
+
+.ng-valid.ng-dirty {
+color: black;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+::-moz-placeholder {
+   font-style: italic;  
 }
 
 #createBut{
@@ -62,18 +156,17 @@ input[type="text"]{
 
 #editBut{
 	position: absolute;
-	margin-left: 25%;
+	margin-left: 17%;
 	margin-top: 2%;
 	width: 55px;
 }
 
 #saveBut{
 	position: relative;
-	margin-left: 25%;
+	margin-left: 17%;
 	margin-top: 2%;
 	visibility: hidden;
 	width: 60px;
-
 }
 
 #cancelBut{
