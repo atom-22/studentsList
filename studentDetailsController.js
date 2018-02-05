@@ -109,7 +109,7 @@ function studentDetailsController(){
 	}
 
 	function backButFunc(){
-		window.location = "students.html";
+		window.location = "index.html";
 	}
 
 }	
