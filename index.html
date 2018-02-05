@@ -35,7 +35,7 @@
 			</tr>
 			<tr ng-repeat = 'st in students.studentList | orderBy:sortType:sortReverse | filter:searchStudent'>       
 				<td><img ng-src="{{st.imageSrc}}" alt="Image" src="images/noavatar.png"></td>
-				<td><a href="studentDetails.html?id={{st.id}}">{{st.firstName + " "+ st.lastName}}</a></td>
+				<td><a href="https://atom-22.github.io/studentsList/studentDetails.html?id={{st.id}}">{{st.firstName + " "+ st.lastName}}</a></td>
 				<td>{{st.department}}</td>
 				<td>{{st.course}}</td>
 			</tr>
