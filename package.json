@@ -1,0 +1,19 @@
+{
+  "name": "studentslist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-22/studentsList.git"
+  },
+  "author": "Atom Ulikhanyan <atomulikhanyan@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atom-22/studentsList/issues"
+  },
+  "homepage": "https://github.com/atom-22/studentsList#readme"
+}
